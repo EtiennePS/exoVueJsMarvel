@@ -5,6 +5,12 @@
 npm install
 ```
 
+Edit the .env file with you own variables
+```
+VUE_APP_PUBLIC_API_KEY=publicApiKey
+VUE_APP_PRIVATE_API_KEY=privateApiKey
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
