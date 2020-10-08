@@ -11,6 +11,11 @@ VUE_APP_PUBLIC_API_KEY=publicApiKey
 VUE_APP_PRIVATE_API_KEY=privateApiKey
 ```
 
+If you plan to update git from the machine, remove your local .env file from git tracking
+```
+git update-index --assume-unchanged .env
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
