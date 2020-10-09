@@ -14,13 +14,12 @@
 </template>
 
 <script>
-import ax from 'axios'
-import jsmd5 from 'js-md5'
-export const axios = ax
-export const md5 = jsmd5
+import axios from "axios";
+import md5 from "js-md5";
+
 export default {
   name: "Character",
-  data () {
+  data() {
     return {
       characters: null,
       loading: false,
@@ -32,21 +31,30 @@ export default {
     updateCharacters() {
       this.loading = true;
       var date = Date.now();
-      var hash = md5(date + process.env.VUE_APP_PRIVATE_API_KEY + process.env.VUE_APP_PUBLIC_API_KEY);
-      var url="https://gateway.marvel.com:443/v1/public/characters?apikey=" + process.env.VUE_APP_PUBLIC_API_KEY
-        + "&ts=" + date + "&hash=" + hash;
+      var hash = md5(
+        date +
+          process.env.VUE_APP_PRIVATE_API_KEY +
+          process.env.VUE_APP_PUBLIC_API_KEY
+      );
+      var url =
+        "https://gateway.marvel.com:443/v1/public/characters?apikey=" +
+        process.env.VUE_APP_PUBLIC_API_KEY +
+        "&ts=" +
+        date +
+        "&hash=" +
+        hash;
       axios
-      .get(url)
-      .then(response => {
-        this.characters = response.data.data.results;
-        this.loading = false;
-        this.copyright = response.data.attributionText;
-      })
-      .catch(error => {
-        console.log(error);
-        this.errored = true;
-      })
-      .finally(() => this.loading = false)
+        .get(url)
+        .then(response => {
+          this.characters = response.data.data.results;
+          this.loading = false;
+          this.copyright = response.data.attributionText;
+        })
+        .catch(error => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
     }
   }
 };
