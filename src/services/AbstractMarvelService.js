@@ -9,10 +9,16 @@ export default class AbstractMarvelService {
     }
   }
 
+  extractResult(data) {
+    return data.results ? data.results : data.result;
+  }
+
   getConfig() {
     return {
       baseURL: "https://gateway.marvel.com:443/v1/public/",
-      dataKey: "data.data.results"
+      dataTransformer: ({ data }) => {
+        return this.extractResult(data.data);
+      }
     };
   }
 
@@ -23,16 +29,20 @@ export default class AbstractMarvelService {
     return "?apikey=" + apiKey + "&ts=" + ts + "&hash=" + hash;
   }
 
-  handleResponse(url, store, onSuccess, onFail, onDone) {
-    store
+  doRequest(url, entity, onSuccess, onFail, onDone) {
+    entity
+      .api()
       .get(url + this.getAuthenticationParams(), this.getConfig())
       .then(response => {
         var data = response.response.data.data;
-        var result = data.results ? data.results : data.result;
+        var result = this.extractResult(data);
         onSuccess(result, response.response.attributionText);
       })
       .catch(response => {
-        onFail(response.response.message);
+        var message = response.response.message
+          ? response.response.message
+          : "An errored occured, please try again later.";
+        onFail(message);
       })
       .finally(() => onDone());
   }

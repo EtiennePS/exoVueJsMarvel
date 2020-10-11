@@ -5,6 +5,6 @@ export default class ComicService extends AbstractMarvelService {
   static entity = "comics";
 
   async getAllComics(onSuccess, onFail, onDone) {
-    this.handleResponse("comics", Comic.api(), onSuccess, onFail, onDone);
+    this.doRequest("comifcs", Comic, onSuccess, onFail, onDone);
   }
 }
