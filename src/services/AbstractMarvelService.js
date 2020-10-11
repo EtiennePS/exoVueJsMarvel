@@ -38,10 +38,11 @@ export default class AbstractMarvelService {
         var result = this.extractResult(data);
         onSuccess(result, response.response.attributionText);
       })
-      .catch(response => {
-        var message = response.response.message
-          ? response.response.message
-          : "An errored occured, please try again later.";
+      .catch(error => {
+        var message =
+          error.response && error.response.data && error.response.data.message
+            ? error.response.data.message
+            : "An errored occured, please try again later.";
         onFail(message);
       })
       .finally(() => onDone());
