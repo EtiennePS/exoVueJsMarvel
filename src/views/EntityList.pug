@@ -1,0 +1,11 @@
+.entityList
+  h1.font-sans.text-2xl {{ entityName }}
+  p(v-if="errored") {{ errorMessage }}
+  p(v-if="loading") Loading...
+  div(v-else)
+    block listedEntity
+    p(v-if="entities") {{ entityName }} {{ startIndex }} of {{ endIndex }} - Page {{ currentPage }} of {{ totalPage }}
+      span.text-blue-500(v-if="!isFirstPage" @click="previousPage")  Prev
+      span.text-blue-500(v-if="!isLastPage" @click="nextPage")  Next
+    <!-- paginate(:page-count="totalPage") -->
+    div(v-if="copyright") {{ copyright }}

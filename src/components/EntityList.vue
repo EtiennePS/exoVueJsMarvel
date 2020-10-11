@@ -1,18 +1,3 @@
-<template lang="pug">
-.entityList
-  h1.font-sans.text-2xl {{ entityName }}
-  p(v-if="errored") {{ errorMessage }}
-  p(v-if="loading") Loading...
-  div(v-else)
-    button(@click="updateEntities") Update
-    p.text-gray-900(v-for="e in entities" :key="e.title") {{ e.title }}
-    p(v-if="entities") {{ entityName }} {{ startIndex }} of {{ endIndex }} - Page {{ currentPage }} of {{ totalPage }}
-      span.text-blue-500(v-if="!isFirstPage" @click="previousPage")  Prev
-      span.text-blue-500(v-if="!isLastPage" @click="nextPage")  Next
-    <!-- paginate(:page-count="totalPage") -->
-    div(v-if="copyright") {{ copyright }}
-</template>
-
 <script>
 export default {
   abstract: true,
@@ -97,13 +82,3 @@ export default {
   }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-button {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
-}
-button:hover {
-  @apply bg-blue-700;
-}
-</style>
