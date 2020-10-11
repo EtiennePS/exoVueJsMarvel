@@ -29,14 +29,20 @@ export default class AbstractMarvelService {
     return "?apikey=" + apiKey + "&ts=" + ts + "&hash=" + hash;
   }
 
-  doRequest(url, entity, onSuccess, onFail, onDone) {
+  doRequest(url, entity, onSuccess, onFail, onDone, page) {
+    url += this.getAuthenticationParams();
+    if (page && page.limit) url += "&limit=" + page.limit;
+    if (page && page.offset) url += "&offset=" + page.offset;
+    if (page && page.orderBy) url += "&orderBy=" + page.orderBy;
+
     entity
       .api()
-      .get(url + this.getAuthenticationParams(), this.getConfig())
+      .get(url, this.getConfig())
       .then(response => {
-        var data = response.response.data.data;
-        var result = this.extractResult(data);
-        onSuccess(result, response.response.attributionText);
+        onSuccess(
+          response.response.data.data,
+          response.response.data.attributionText
+        );
       })
       .catch(error => {
         var message =
