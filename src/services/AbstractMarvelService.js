@@ -13,31 +13,34 @@ export default class AbstractMarvelService {
     return data.results ? data.results : data.result;
   }
 
-  getConfig() {
+  // TODO MEttre des arguments de taille indéfinie ici
+  getConfig(page = undefined) {
+    const ts = Date.now();
+
     return {
       baseURL: "https://gateway.marvel.com:443/v1/public/",
+      params: {
+        apikey: process.env.VUE_APP_PUBLIC_API_KEY,
+        ts: ts,
+        hash: md5(
+          ts +
+            process.env.VUE_APP_PRIVATE_API_KEY +
+            process.env.VUE_APP_PUBLIC_API_KEY
+        ),
+        limit: page && page.limit ? page.limit : null,
+        offset: page && page.offset ? page.offset : null,
+        orderBy: page && page.orderBy ? page.orderBy : null
+      },
       dataTransformer: ({ data }) => {
         return this.extractResult(data.data);
       }
     };
   }
 
-  getAuthenticationParams() {
-    var apiKey = process.env.VUE_APP_PUBLIC_API_KEY;
-    var ts = Date.now;
-    var hash = md5(ts + process.env.VUE_APP_PRIVATE_API_KEY + apiKey);
-    return "?apikey=" + apiKey + "&ts=" + ts + "&hash=" + hash;
-  }
-
   doRequest(url, entity, onSuccess, onFail, onDone, page) {
-    url += this.getAuthenticationParams();
-    if (page && page.limit) url += "&limit=" + page.limit;
-    if (page && page.offset) url += "&offset=" + page.offset;
-    if (page && page.orderBy) url += "&orderBy=" + page.orderBy;
-
     entity
       .api()
-      .get(url, this.getConfig())
+      .get(url, this.getConfig(page))
       .then(response => {
         onSuccess(
           response.response.data.data,
@@ -45,7 +48,7 @@ export default class AbstractMarvelService {
         );
       })
       .catch(error => {
-        var message =
+        let message =
           error.response && error.response.data && error.response.data.message
             ? error.response.data.message
             : "An errored occured, please try again later.";
