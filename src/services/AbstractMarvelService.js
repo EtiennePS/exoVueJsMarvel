@@ -14,7 +14,7 @@ export default class AbstractMarvelService {
   }
 
   // TODO MEttre des arguments de taille indéfinie ici
-  getConfig(page = undefined) {
+  getConfig(options = undefined) {
     const ts = Date.now();
 
     return {
@@ -27,9 +27,7 @@ export default class AbstractMarvelService {
             process.env.VUE_APP_PRIVATE_API_KEY +
             process.env.VUE_APP_PUBLIC_API_KEY
         ),
-        limit: page && page.limit ? page.limit : null,
-        offset: page && page.offset ? page.offset : null,
-        orderBy: page && page.orderBy ? page.orderBy : null
+        ...options
       },
       dataTransformer: ({ data }) => {
         return this.extractResult(data.data);
@@ -37,10 +35,10 @@ export default class AbstractMarvelService {
     };
   }
 
-  doRequest(url, entity, onSuccess, onFail, onDone, page) {
+  doRequest(url, entity, onSuccess, onFail, onDone, options) {
     entity
       .api()
-      .get(url, this.getConfig(page))
+      .get(url, this.getConfig(options))
       .then(response => {
         onSuccess(
           response.response.data.data,
@@ -48,11 +46,16 @@ export default class AbstractMarvelService {
         );
       })
       .catch(error => {
-        let message =
-          error.response && error.response.data && error.response.data.message
-            ? error.response.data.message
-            : "An errored occured, please try again later.";
-        onFail(message);
+        let message = "An errored occured, please try again later.";
+        let code = null;
+        if (error.response && error.response.data) {
+          if (error.response.data.message)
+            message = error.response.data.message;
+          else if (error.response.data.status)
+            message = error.response.data.message;
+          if (error.response.data.code) code = error.response.data.code;
+        }
+        onFail(message, code);
       })
       .finally(() => onDone());
   }

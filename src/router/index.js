@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import ComicsList from "@/components/ComicsList.vue";
+import ComicDetail from "@/components/ComicDetail.vue";
 
 const routes = [
   {
@@ -21,6 +22,11 @@ const routes = [
     path: "/comics",
     name: "Comics",
     component: ComicsList
+  },
+  {
+    path: "/comics/:entityId",
+    name: "ComicDetail",
+    component: ComicDetail
   }
 ];
 

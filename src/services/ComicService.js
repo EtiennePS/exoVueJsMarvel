@@ -4,7 +4,11 @@ import Comic from "@/models/Comic.js";
 export default class ComicService extends AbstractMarvelService {
   static entity = "comics";
 
-  async getList(onSuccess, onFail, onDone, page) {
-    this.doRequest("comics", Comic, onSuccess, onFail, onDone, page);
+  getList(onSuccess, onFail, onDone, options) {
+    this.doRequest("comics", Comic, onSuccess, onFail, onDone, options);
+  }
+
+  getEntity(onSuccess, onFail, onDone, id, options) {
+    this.doRequest("comics/" + id, Comic, onSuccess, onFail, onDone, options);
   }
 }

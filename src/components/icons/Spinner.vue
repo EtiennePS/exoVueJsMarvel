@@ -42,8 +42,8 @@ export default {
   name: "Spinner",
   props: {
     fill: { type: String, default: "#6C7A89" },
-    height: { type: Number, default: 20 },
-    dur: { type: Number, default: 1.0 }
+    height: { type: String, default: "20px" },
+    dur: { type: String, default: "1.0s" }
   }
 };
 </script>
