@@ -1,7 +1,14 @@
 <script>
+import Paginate from "@/components/Paginate.vue";
+import Spinner from "@/components/icons/Spinner.vue";
+
 export default {
   abstract: true,
   name: "EntityList",
+  components: {
+    Paginate,
+    Spinner
+  },
   data() {
     return {
       entityName: "Entity",
@@ -17,24 +24,8 @@ export default {
     };
   },
   computed: {
-    totalPage() {
-      return Math.ceil(this.totalResult / this.perPage);
-    },
     startIndex() {
       return (this.currentPage - 1) * this.perPage + 1;
-    },
-    endIndex() {
-      if (this.entities && this.entities.length) {
-        return this.startIndex + this.entities.length - 1;
-      } else {
-        return this.startIndex;
-      }
-    },
-    isFirstPage() {
-      return this.currentPage == 1;
-    },
-    isLastPage() {
-      return this.currentPage == this.totalPage;
     }
   },
   methods: {
@@ -64,17 +55,9 @@ export default {
     onUpdateDone() {
       this.loading = false;
     },
-    nextPage() {
-      if (!this.isLastPage) {
-        this.currentPage++;
-        this.updateEntities();
-      }
-    },
-    previousPage() {
-      if (!this.isFirstPage) {
-        this.currentPage--;
-        this.updateEntities();
-      }
+    callbackPaginate(pageNumber) {
+      this.currentPage = pageNumber;
+      this.updateEntities();
     }
   },
   mounted() {

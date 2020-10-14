@@ -106,7 +106,6 @@ export default {
   methods: {
     updatePage(index) {
       this.callback(index);
-      console.log(this.totalList);
     },
     nextPage() {
       if (!this.isLastPage) {
