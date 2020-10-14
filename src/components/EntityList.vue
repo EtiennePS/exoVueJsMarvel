@@ -13,7 +13,6 @@ export default {
   },
   data() {
     return {
-      entityName: "Entity",
       entities: null,
       perPage: 50,
       currentPage: 1,

@@ -5,7 +5,8 @@ export default {
       loading: false,
       errored: false,
       errorMessage: null,
-      copyright: null
+      copyright: null,
+      entityName: "Entity"
     };
   },
   methods: {

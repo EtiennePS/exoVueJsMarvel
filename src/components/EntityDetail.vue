@@ -16,7 +16,6 @@ export default {
   },
   data() {
     return {
-      entityName: "Entity",
       is404: false,
       entity: null
     };
