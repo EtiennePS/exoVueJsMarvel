@@ -1,11 +1,11 @@
 <template lang="pug">
 .paginate
   p {{ entityName }} {{ startIndex }} to {{ endIndex }} of {{ total }}
-  button(@click="updatePage(1)").chevron &lt;&lt;
-  button(@click="previousPage").chevron &lt;
+  button(@click="updatePage(1)" v-if="!isFirstPage").chevron &lt;&lt;
+  button(@click="previousPage" v-if="!isFirstPage").chevron &lt;
   button(v-for="i in totalList" :key="i.number" @click="updatePage(i.number)" v-bind:class="[{ current: i.number == currentPage }]") {{ i.text }}
-  button(@click="nextPage").chevron &gt;
-  button(@click="updatePage(totalPage)").chevron &gt;&gt;
+  button(@click="nextPage" v-if="!isLastPage").chevron &gt;
+  button(@click="updatePage(totalPage)" v-if="!isLastPage").chevron &gt;&gt;
 </template>
 
 <script>
@@ -28,7 +28,10 @@ export default {
     },
     endIndex() {
       if (this.isLastPage) {
-        return this.total % this.perPage;
+        return (
+          (this.total % this.perPage) +
+          Math.floor(this.total / this.perPage) * this.perPage
+        );
       } else {
         return this.startIndex + this.perPage;
       }
