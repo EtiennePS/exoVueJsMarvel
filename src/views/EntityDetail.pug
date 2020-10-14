@@ -1,7 +1,7 @@
 .entityDetail
   section(v-if="errored")
     section(v-if="is404")
-      EntityNotFound(v-bind:entityName="Comic")
+      EntityNotFound(v-bind:entityName="entityName")
     section(v-else) {{ errorMessage }}
   section(v-if="loading") 
     Spinner(height="20px" fill="grey") Loading...

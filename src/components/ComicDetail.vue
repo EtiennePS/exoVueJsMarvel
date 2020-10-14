@@ -15,7 +15,8 @@ export default {
   extends: EntityDetail,
   data() {
     return {
-      service: new ComicService()
+      service: new ComicService(),
+      entityName: "Comic"
     };
   }
 };
