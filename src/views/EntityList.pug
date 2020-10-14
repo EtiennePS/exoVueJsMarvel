@@ -1,10 +1,10 @@
 .entityList
   h1.font-sans.text-2xl {{ entityName }}
   p(v-if="errored") {{ errorMessage }}
-  p(v-if="loading") 
+  p(v-if="loading")
     Spinner(fill="orange" height="30px" dur="1.0s")
     |  Loading...
   div(v-else)
     block listedEntity
-    Paginate(v-bind:perPage="perPage" v-bind:currentPage="currentPage" v-bind:total="totalResult" v-bind:callback="callbackPaginate" v-bind:entityName="entityName")
+    Paginate(:perPage="perPage" :currentPage="currentPage" :total="totalResult" :callback="callbackPaginate" :entityName="entityName")
     div(v-if="copyright") {{ copyright }}

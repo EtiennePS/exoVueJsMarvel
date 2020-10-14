@@ -1,7 +1,7 @@
 <script>
-import Spinner from "@/components/icons/Spinner.vue";
-import EntityNotFound from "@/components/EntityNotFound.vue";
-import serviceMixin from "@/mixins/serviceMixin.js";
+import Spinner from "@/components/icons/Spinner";
+import EntityNotFound from "@/components/EntityNotFound";
+import serviceMixin from "@/mixins/serviceMixin";
 
 export default {
   name: "EntityDetail",
@@ -46,7 +46,7 @@ export default {
     onUpdateFail(message, code) {
       this.errored = true;
       this.errorMessage = message;
-      this.is404 = code == 404;
+      this.is404 = code === 404;
     }
   },
   mounted() {

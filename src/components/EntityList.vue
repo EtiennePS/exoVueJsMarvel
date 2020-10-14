@@ -1,7 +1,7 @@
 <script>
-import Paginate from "@/components/Paginate.vue";
-import Spinner from "@/components/icons/Spinner.vue";
-import serviceMixin from "@/mixins/serviceMixin.js";
+import Paginate from "@/components/Paginate";
+import Spinner from "@/components/icons/Spinner";
+import serviceMixin from "@/mixins/serviceMixin";
 
 export default {
   abstract: true,

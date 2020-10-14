@@ -1,25 +1,22 @@
 <template lang="pug">
 extends ../views/EntityDetail
 block detailEntity
-  h1 {{ entity.title }}
+  h1 {{ entity.name }}
   label Description :
   p {{ entity.description }}
 </template>
 
 <script>
 import EntityDetail from "@/components/EntityDetail";
-import ComicService from "@/services/ComicService";
+import CharacterService from "@/services/CharacterService";
 
 export default {
-  name: "ComicDetail",
+  name: "CharacterDetail",
   extends: EntityDetail,
   data() {
     return {
-      service: new ComicService(),
-      entityName: "Comic"
+      service: new CharacterService()
     };
   }
 };
 </script>
-
-<style scoped lang="scss"></style>

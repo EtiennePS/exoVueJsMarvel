@@ -37,70 +37,70 @@ export default {
       }
     },
     isFirstPage() {
-      return this.currentPage == 1;
+      return this.currentPage === 1;
     },
     isLastPage() {
-      return this.currentPage == this.totalPage;
+      return this.currentPage === this.totalPage;
     },
     firstList() {
-      var indexList = [];
-      var lastIndex = Math.min(
+      let indexList = [];
+      let lastIndex = Math.min(
         this.displayLength,
         this.currentPage - this.displayLength - 1
       );
-      for (var i = 1; i <= lastIndex; i++) {
+      for (let i = 1; i <= lastIndex; i++) {
         indexList.push(i);
       }
       return indexList;
     },
     lastList() {
-      var indexList = [];
-      var firstIndex = Math.max(
+      let indexList = [];
+      let firstIndex = Math.max(
         this.totalPage - this.displayLength + 1,
         this.currentPage + this.displayLength
       );
-      for (var i = firstIndex; i <= this.totalPage; i++) {
+      for (let i = firstIndex; i <= this.totalPage; i++) {
         indexList.push(i);
       }
       return indexList;
     },
     currentPageList() {
-      var indexList = [];
-      var firstIndex = Math.max(1, this.currentPage - this.displayLength);
-      var lastIndex = Math.min(
+      let indexList = [];
+      let firstIndex = Math.max(1, this.currentPage - this.displayLength);
+      let lastIndex = Math.min(
         this.totalPage,
         this.currentPage + this.displayLength
       );
-      for (var i = firstIndex; i <= lastIndex; i++) {
+      for (let i = firstIndex; i <= lastIndex; i++) {
         indexList.push(i);
       }
       return indexList;
     },
     totalList() {
-      var firList = this.firstList;
-      var midList = this.currentPageList;
-      var lastList = this.lastList;
-      var middle1 = Math.floor((firList[firList.length - 1] + midList[0]) / 2);
-      var middle2 = Math.ceil((midList[midList.length - 1] + lastList[0]) / 2);
-      var totalList = [];
+      let firList = this.firstList;
+      let midList = this.currentPageList;
+      let lastList = this.lastList;
+      let middle1 = Math.floor((firList[firList.length - 1] + midList[0]) / 2);
+      let middle2 = Math.ceil((midList[midList.length - 1] + lastList[0]) / 2);
+      let totalList = [];
 
-      for (var i = 0; i < firList.length; i++) {
+      for (let i = 0; i < firList.length; i++) {
         totalList.push({ number: firList[i], text: firList[i] });
       }
 
-      if (firList.length == this.displayLength) {
+      if (firList.length === this.displayLength) {
         totalList.push({ number: middle1, text: "..." });
       }
 
-      for (i = 0; i < midList.length; i++) {
+      for (let i = 0; i < midList.length; i++) {
         totalList.push({ number: midList[i], text: midList[i] });
       }
 
-      if (lastList.length == this.displayLength) {
+      if (lastList.length === this.displayLength) {
         totalList.push({ number: middle2, text: "..." });
       }
 
-      for (i = 0; i < lastList.length; i++) {
+      for (let i = 0; i < lastList.length; i++) {
         totalList.push({ number: lastList[i], text: lastList[i] });
       }
       return totalList;
