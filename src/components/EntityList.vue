@@ -1,10 +1,12 @@
 <script>
 import Paginate from "@/components/Paginate.vue";
 import Spinner from "@/components/icons/Spinner.vue";
+import serviceMixin from "@/mixins/serviceMixin.js";
 
 export default {
   abstract: true,
   name: "EntityList",
+  mixins: [serviceMixin],
   components: {
     Paginate,
     Spinner
@@ -13,11 +15,6 @@ export default {
     return {
       entityName: "Entity",
       entities: null,
-      loading: false,
-      errored: false,
-      errorMessage: null,
-      copyright: null,
-      service: null, //To redefine in child components
       perPage: 50,
       currentPage: 1,
       totalResult: 0
@@ -51,9 +48,6 @@ export default {
     onUpdateFail(message) {
       this.errored = true;
       this.errorMessage = message;
-    },
-    onUpdateDone() {
-      this.loading = false;
     },
     callbackPaginate(pageNumber) {
       this.currentPage = pageNumber;
