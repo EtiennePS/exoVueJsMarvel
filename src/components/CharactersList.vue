@@ -1,8 +1,10 @@
 <template lang="pug">
-extends ../views/EntityList
-block listedEntity
-  //a(v-for="e in entities" :key="e.name" @click="goCharacterDetail(e.id)") {{e.name}}
-  p.text-gray-900(v-for="e in entities" :key="e.name" @click="goCharacterDetail(e.id)") {{ e.name }}
+EntityList(
+  :service="service"
+  :entityName="entityName"
+)
+  template(v-slot="{entity}")
+    p(@click="goCharacterDetail(entity)") {{entity.name}}
 </template>
 
 <script>
@@ -12,7 +14,6 @@ import EntityList from "@/components/EntityList";
 export default {
   name: "CharacterList",
   components: { EntityList },
-  extends: EntityList,
   props: {
     entityId: Number
   },

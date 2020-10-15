@@ -1,10 +1,28 @@
+<template lang="pug">
+.entityList
+  h1.font-sans.text-2xl {{ entityName }}
+  p(v-if="errored") {{ errorMessage }}
+  p(v-if="loading")
+    Spinner(fill="orange" height="30px" dur="1.0s")
+    |  Loading...
+  div(v-else)
+    slot(v-for="e in entities" :entity="e")
+    Paginate(
+      :perPage="perPage"
+      :currentPage="currentPage"
+      :total="totalResult"
+      :entityName="entityName"
+      v-on:page-change="callbackPaginate")
+    div(v-if="copyright") {{ copyright }}
+
+</template>
+
 <script>
 import Paginate from "@/components/Paginate";
 import Spinner from "@/components/IconSpinner";
 import serviceMixin from "@/mixins/serviceMixin";
 
 export default {
-  abstract: true,
   name: "EntityList",
   mixins: [serviceMixin],
   components: {

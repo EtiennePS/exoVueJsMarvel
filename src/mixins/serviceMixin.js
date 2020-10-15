@@ -1,12 +1,17 @@
 export default {
+  props: {
+    service: Object,
+    entityName: {
+      default: "Entity",
+      type: String
+    }
+  },
   data() {
     return {
-      service: null,
       loading: false,
       errored: false,
       errorMessage: null,
-      copyright: null,
-      entityName: "Entity"
+      copyright: null
     };
   },
   methods: {

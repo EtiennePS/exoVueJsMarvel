@@ -1,11 +1,11 @@
 <template lang="pug">
 .paginate
   p {{ entityName }} {{ startIndex }} to {{ endIndex }} of {{ total }}
-  button(@click="$emit('pageChange', 1)" v-if="!isFirstPage").chevron &lt;&lt;
+  button(@click="$emit('page-change', 1)" v-if="!isFirstPage").chevron &lt;&lt;
   button(@click="previousPage" v-if="!isFirstPage").chevron &lt;
-  button(v-for="i in totalList" :key="i.number" @click="$emit('pageChange', i.number)" v-bind:class="[{ current: i.number == currentPage }]") {{ i.text }}
+  button(v-for="i in totalList" :key="i.number" @click="$emit('page-change', i.number)" v-bind:class="[{ current: i.number == currentPage }]") {{ i.text }}
   button(@click="nextPage" v-if="!isLastPage").chevron &gt;
-  button(@click="$emit('pageChange', totalPage)" v-if="!isLastPage").chevron &gt;&gt;
+  button(@click="$emit('page-change', totalPage)" v-if="!isLastPage").chevron &gt;&gt;
 </template>
 
 <script>
@@ -108,12 +108,12 @@ export default {
   methods: {
     nextPage() {
       if (!this.isLastPage) {
-        $emit('pageChange', this.currentPage + 1);
+        this.$emit("page-change", this.currentPage + 1);
       }
     },
     previousPage() {
       if (!this.isFirstPage) {
-        $emit('pageChange', this.currentPage - 1);
+        this.$emit("page-change", this.currentPage - 1);
       }
     }
   }
