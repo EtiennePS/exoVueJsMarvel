@@ -1,7 +1,10 @@
 <template lang="pug">
-extends ../views/EntityList
-block listedEntity
-  p.text-gray-900(v-for="e in entities" :key="e.title") {{ e.title }}
+EntityList(
+  :service="service"
+  :entityName="entityName"
+)
+  template(v-slot="{entity}")
+    p.text-gray-900 {{ entity.title }}
 </template>
 
 <script>
@@ -11,7 +14,6 @@ import EntityList from "@/components/EntityList";
 export default {
   name: "ComicsList",
   components: { EntityList },
-  extends: EntityList,
   data() {
     return {
       service: new ComicService(),

@@ -1,3 +1,16 @@
+<template lang="pug">
+.entityDetail
+  section(v-if="errored")
+    section(v-if="is404")
+      EntityNotFound(v-bind:entityName="entityName")
+    section(v-else) {{ errorMessage }}
+  section(v-if="loading")
+    Spinner(fill="red" height="30px" dur="1.0s")
+    |  Loading...
+  section(v-if="entity")
+    slot(:entity="entity")
+</template>
+
 <script>
 import Spinner from "@/components/IconSpinner";
 import EntityNotFound from "@/components/EntityNotFound";

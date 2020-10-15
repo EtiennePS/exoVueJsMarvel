@@ -39,9 +39,7 @@ const routes = [
     path: "/comics/:entityId",
     name: "ComicDetail",
     component: ComicDetail,
-    props: {
-      default: true
-    }
+    props: true
   }
 ];
 

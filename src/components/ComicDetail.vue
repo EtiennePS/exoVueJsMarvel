@@ -1,9 +1,14 @@
 <template lang="pug">
-extends ../views/EntityDetail
-block detailEntity
-  h1 {{ entity.title }}
-  label Description :
-  p {{ entity.description }}
+EntityDetail(
+  :service="service"
+  :entityName="entityName"
+  :entityId="entityId"
+  :passedEntity="passedEntity"
+)
+  template(v-slot="{entity}")
+    h1 {{ entity.title }}
+    label Description :
+    p {{ entity.description }}
 </template>
 
 <script>
@@ -12,7 +17,11 @@ import ComicService from "@/services/ComicService";
 
 export default {
   name: "ComicDetail",
-  extends: EntityDetail,
+  components: { EntityDetail },
+  props: {
+    passedEntity: { default: null },
+    entityId: { type: String, default: null }
+  },
   data() {
     return {
       service: new ComicService(),
