@@ -19,7 +19,8 @@ const routes = [
   {
     path: "/characters/:entityId",
     name: "CharacterDetail",
-    component: CharacterDetail
+    component: CharacterDetail,
+    props: true
   },
   {
     path: "/about",
@@ -37,7 +38,10 @@ const routes = [
   {
     path: "/comics/:entityId",
     name: "ComicDetail",
-    component: ComicDetail
+    component: ComicDetail,
+    props: {
+      default: true
+    }
   }
 ];
 

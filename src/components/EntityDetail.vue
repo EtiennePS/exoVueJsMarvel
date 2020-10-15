@@ -12,20 +12,13 @@ export default {
   },
   props: {
     passedEntity: { default: null },
-    entityId: { type: Number, default: null }
+    entityId: { type: String, default: null }
   },
   data() {
     return {
       is404: false,
       entity: null
     };
-  },
-  computed: {
-    getEntityId() {
-      if (this.entityId) return this.entityId;
-      if (this.$route.params.entityId) return this.$route.params.entityId;
-      return null;
-    }
   },
   methods: {
     updateEntity() {
@@ -34,7 +27,7 @@ export default {
         this.onUpdateSuccess,
         this.onUpdateFail,
         this.onUpdateDone,
-        this.getEntityId
+        this.entityId
       );
     },
     onUpdateSuccess(data, copyright) {
@@ -52,9 +45,9 @@ export default {
   mounted() {
     if (this.passedEntity) {
       this.entity = this.passedEntity;
-    } else if (!this.passedEntity && this.getEntityId) {
+    } else if (!this.passedEntity && this.entityId) {
       this.updateEntity();
-    } else if (!this.passedEntity && !this.getEntityId) {
+    } else if (!this.passedEntity && !this.entityId) {
       this.errored = true;
       this.errorMessage =
         "The passedEntity or entityid must be provided too display details!";
