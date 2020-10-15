@@ -4,16 +4,20 @@ EntityList(
   :entityName="entityName"
 )
   template(v-slot="{entity}")
-    p.text-gray-900 {{ entity.title }}
+    ComicDetail(:passedEntity="entity" :isShort="true")
 </template>
 
 <script>
 import EntityList from "@/components/EntityList";
+import ComicDetail from "@/components/ComicDetail";
 import { SERVICES_NAMES } from "@/enums/EnumServices";
 
 export default {
   name: "ComicsList",
-  components: { EntityList },
+  components: { 
+    EntityList, 
+    ComicDetail 
+  },
   data() {
     return {
       serviceName: SERVICES_NAMES.COMICS,
