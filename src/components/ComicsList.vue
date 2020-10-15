@@ -1,6 +1,6 @@
 <template lang="pug">
 EntityList(
-  :service="service"
+  :serviceName="serviceName"
   :entityName="entityName"
 )
   template(v-slot="{entity}")
@@ -9,14 +9,14 @@ EntityList(
 
 <script>
 import EntityList from "@/components/EntityList";
-import MarvelService from "@/services/MarvelService";
+import { SERVICES_NAMES } from "@/enums/EnumServices";
 
 export default {
   name: "ComicsList",
   components: { EntityList },
   data() {
     return {
-      service: new MarvelService("comics"),
+      serviceName: SERVICES_NAMES.COMICS,
       entityName: "Comic"
     };
   }

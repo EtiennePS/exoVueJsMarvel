@@ -1,6 +1,6 @@
 <template lang="pug">
 EntityDetail(
-  :service="service"
+  :serviceName="serviceName"
   :entityName="entityName"
   :entityId="entityId"
   :passedEntity="passedEntity"
@@ -13,14 +13,14 @@ EntityDetail(
 
 <script>
 import EntityDetail from "@/components/EntityDetail";
-import MarvelService from "@/services/MarvelService";
+import { SERVICES_NAMES } from "@/enums/EnumServices";
 
 export default {
   name: "CharacterDetail",
   components: { EntityDetail },
   data() {
     return {
-      service: new MarvelService("characters")
+      serviceName: SERVICES_NAMES.CHARACTERS
     };
   }
 };

@@ -1,6 +1,8 @@
+import MarvelService from "@/services/MarvelService";
+
 export default {
   props: {
-    service: Object,
+    serviceName: String,
     entityName: {
       default: "Entity",
       type: String
@@ -8,6 +10,7 @@ export default {
   },
   data() {
     return {
+      service: new MarvelService(this.serviceName),
       loading: false,
       errored: false,
       errorMessage: null,
