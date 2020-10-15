@@ -1,6 +1,6 @@
 <script>
 import Paginate from "@/components/Paginate";
-import Spinner from "@/components/icons/Spinner";
+import Spinner from "@/components/IconSpinner";
 import serviceMixin from "@/mixins/serviceMixin";
 
 export default {

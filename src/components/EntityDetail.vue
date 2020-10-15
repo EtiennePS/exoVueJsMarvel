@@ -1,5 +1,5 @@
 <script>
-import Spinner from "@/components/icons/Spinner";
+import Spinner from "@/components/IconSpinner";
 import EntityNotFound from "@/components/EntityNotFound";
 import serviceMixin from "@/mixins/serviceMixin";
 
