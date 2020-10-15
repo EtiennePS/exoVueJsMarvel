@@ -1,11 +1,11 @@
 <template lang="pug">
 .paginate
   p {{ entityName }} {{ startIndex }} to {{ endIndex }} of {{ total }}
-  button(@click="updatePage(1)" v-if="!isFirstPage").chevron &lt;&lt;
+  button(@click="$emit('pageChange', 1)" v-if="!isFirstPage").chevron &lt;&lt;
   button(@click="previousPage" v-if="!isFirstPage").chevron &lt;
-  button(v-for="i in totalList" :key="i.number" @click="updatePage(i.number)" v-bind:class="[{ current: i.number == currentPage }]") {{ i.text }}
+  button(v-for="i in totalList" :key="i.number" @click="$emit('pageChange', i.number)" v-bind:class="[{ current: i.number == currentPage }]") {{ i.text }}
   button(@click="nextPage" v-if="!isLastPage").chevron &gt;
-  button(@click="updatePage(totalPage)" v-if="!isLastPage").chevron &gt;&gt;
+  button(@click="$emit('pageChange', totalPage)" v-if="!isLastPage").chevron &gt;&gt;
 </template>
 
 <script>
@@ -15,7 +15,6 @@ export default {
     currentPage: Number,
     perPage: Number,
     total: Number,
-    callback: Function,
     displayLength: { type: Number, default: 3 },
     entityName: { type: String, default: "Element" }
   },
@@ -107,17 +106,14 @@ export default {
     }
   },
   methods: {
-    updatePage(index) {
-      this.callback(index);
-    },
     nextPage() {
       if (!this.isLastPage) {
-        this.updatePage(this.currentPage + 1);
+        $emit('pageChange', this.currentPage + 1);
       }
     },
     previousPage() {
       if (!this.isFirstPage) {
-        this.updatePage(this.currentPage - 1);
+        $emit('pageChange', this.currentPage - 1);
       }
     }
   }
