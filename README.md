@@ -5,7 +5,7 @@
 npm install
 ```
 
-Edit the .env file with you own variables
+Copy the .env file to a .env.local file and edit it with your own variables
 ```
 VUE_APP_PUBLIC_API_KEY=publicApiKey
 VUE_APP_PRIVATE_API_KEY=privateApiKey
