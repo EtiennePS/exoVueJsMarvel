@@ -8,15 +8,15 @@ EntityList(
 </template>
 
 <script>
-import ComicService from "@/services/ComicService";
 import EntityList from "@/components/EntityList";
+import MarvelService from "@/services/MarvelService";
 
 export default {
   name: "ComicsList",
   components: { EntityList },
   data() {
     return {
-      service: new ComicService(),
+      service: new MarvelService("comics"),
       entityName: "Comic"
     };
   }

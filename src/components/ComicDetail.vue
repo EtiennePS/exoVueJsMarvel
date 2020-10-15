@@ -13,7 +13,7 @@ EntityDetail(
 
 <script>
 import EntityDetail from "@/components/EntityDetail";
-import ComicService from "@/services/ComicService";
+import MarvelService from "@/services/MarvelService";
 
 export default {
   name: "ComicDetail",
@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      service: new ComicService(),
+      service: new MarvelService("comics"),
       entityName: "Comic"
     };
   }

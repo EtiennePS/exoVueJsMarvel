@@ -13,14 +13,14 @@ EntityDetail(
 
 <script>
 import EntityDetail from "@/components/EntityDetail";
-import CharacterService from "@/services/CharacterService";
+import MarvelService from "@/services/MarvelService";
 
 export default {
   name: "CharacterDetail",
   components: { EntityDetail },
   data() {
     return {
-      service: new CharacterService()
+      service: new MarvelService("characters")
     };
   }
 };

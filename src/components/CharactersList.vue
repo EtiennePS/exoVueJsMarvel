@@ -8,8 +8,8 @@ EntityList(
 </template>
 
 <script>
-import CharacterService from "@/services/CharacterService";
 import EntityList from "@/components/EntityList";
+import MarvelService from "@/services/MarvelService";
 
 export default {
   name: "CharacterList",
@@ -19,13 +19,12 @@ export default {
   },
   data() {
     return {
-      service: new CharacterService(),
+      service: new MarvelService("characters"),
       entityName: "Character"
     };
   },
   methods: {
     goCharacterDetail: id => {
-      //entityId = id;
       console.log(id);
     }
   }
