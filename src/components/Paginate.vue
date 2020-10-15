@@ -56,7 +56,8 @@ export default {
       let indexList = [];
       let firstIndex = Math.max(
         this.totalPage - this.displayLength + 1,
-        this.currentPage + this.displayLength
+        this.currentPage + this.displayLength,
+        this.currentPageList[this.currentPageList.length - 1] + 1
       );
       for (let i = firstIndex; i <= this.totalPage; i++) {
         indexList.push(i);
@@ -87,7 +88,7 @@ export default {
         totalList.push({ number: firList[i], text: firList[i] });
       }
 
-      if (firList.length === this.displayLength) {
+      if (firList.length === this.displayLength && (firList[firList.length - 1] + 1) < midList[0]) {
         totalList.push({ number: middle1, text: "..." });
       }
 
@@ -95,7 +96,7 @@ export default {
         totalList.push({ number: midList[i], text: midList[i] });
       }
 
-      if (lastList.length === this.displayLength) {
+      if (lastList.length === this.displayLength && (midList[midList.length - 1] + 1) < lastList[0]) {
         totalList.push({ number: middle2, text: "..." });
       }
 
