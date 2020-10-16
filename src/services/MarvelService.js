@@ -50,13 +50,25 @@ export default class MarvelService extends AbstractMarvelService {
   }
 
   getEntity(onSuccess, onFail, onDone, id, options) {
-    this.doRequest(
-      `${this.service.name}/` + id,
-      this.service.model,
-      onSuccess,
-      onFail,
-      onDone,
-      options
-    );
+    //Récupération dans vuex-orm
+    let entity = this.service.model.find(id);
+    if (entity) {
+      //Si l'entité a été récupéré dans l'ORM
+      onSuccess(
+        { results: [entity] },
+        "Data provided by Marvel. © 2020 MARVEL"
+      );
+      onDone();
+    } else {
+      //Sinon on récupère dans l'api Marvel
+      this.doRequest(
+        `${this.service.name}/` + id,
+        this.service.model,
+        onSuccess,
+        onFail,
+        onDone,
+        options
+      );
+    }
   }
 }

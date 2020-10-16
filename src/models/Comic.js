@@ -21,7 +21,13 @@ export default class Comic extends Model {
       format: this.attr(null),
       pageCount: this.attr(null),
       textObjects: this.attr(null),
-      resourceURI: this.attr(null)
+      resourceURI: this.attr(null),
+      thumbnail: this.attr(null),
+      images: this.attr(null),
+      creators: this.attr(null),
+      characters: this.attr(null),
+      stories: this.attr(null),
+      events: this.attr(null)
     };
   }
 }

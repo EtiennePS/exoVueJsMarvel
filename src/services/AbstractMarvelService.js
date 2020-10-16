@@ -35,8 +35,8 @@ export default class AbstractMarvelService {
     };
   }
 
-  doRequest(url, entity, onSuccess, onFail, onDone, options) {
-    entity
+  doRequest(url, model, onSuccess, onFail, onDone, options) {
+    model
       .api()
       .get(url, this.getConfig(options))
       .then(response => {
