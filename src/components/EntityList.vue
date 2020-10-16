@@ -9,7 +9,7 @@
     slot(name="filters")
     slot(v-for="e in entities" :entity="e")
     Paginate(
-      :perPage="perPage"
+      :perPage="filtersData.limit"
       :currentPage="currentPage"
       :total="totalResult"
       :entityName="entityName"
@@ -36,14 +36,13 @@ export default {
   data() {
     return {
       entities: null,
-      perPage: 20,
       currentPage: 1,
       totalResult: 0
     };
   },
   computed: {
     startIndex() {
-      return (this.currentPage - 1) * this.perPage + 1;
+      return (this.currentPage - 1) * this.filtersData.limit + 1;
     }
   },
   methods: {
@@ -54,7 +53,6 @@ export default {
         this.onUpdateFail,
         this.onUpdateDone,
         {
-          limit: this.perPage,
           offset: this.startIndex - 1,
           ...this.filtersData
         }
@@ -65,7 +63,7 @@ export default {
       this.copyright = copyright;
       this.errored = false;
       this.totalResult = data.total;
-      this.currentPage = data.offset / this.perPage + 1;
+      this.currentPage = data.offset / this.filtersData.limit + 1;
     },
     onUpdateFail(message) {
       this.errored = true;

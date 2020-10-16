@@ -9,6 +9,9 @@ form(v-on:submit.prevent="onSubmit")
     option
     option(v-for="option in orderByValues" :value="option.value") {{ option.text }}
   slot
+  label(for="limit") Result per page
+  select(name="limit")
+    option(v-for="i in [10,20,50,100]" :key="i" :value="i" :selected="i===initialForm.limit") {{ i }}
   button(type="submit") Validate
 </template>
 
@@ -17,7 +20,8 @@ export default {
   name: "Filters",
   props: {
     isName: Boolean,
-    orderByValues: Array
+    orderByValues: Array,
+    initialForm: Object
   },
   computed: {
     getName() {
@@ -35,6 +39,7 @@ export default {
           data[e.name] = e.value;
         }
       });
+      data.limit = parseInt(data.limit);
       this.$emit("filters-submit", data);
     }
   }
