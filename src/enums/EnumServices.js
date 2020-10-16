@@ -1,6 +1,17 @@
-export const SERVICES_NAMES = {
+export default {
   COMICS: "comics",
-  CHARACTERS: "characters"
+  CHARACTERS: "characters",
+  CREATORS: "creators",
+  STORIES: "stories",
+  EVENTS: "events",
+  SERIES: "series"
 };
 
-export default { SERVICES_NAMES };
+/*export const Enum = {
+  COMICS: "comics",
+  CHARACTERS: "characters",
+  CREATORS: "creators",
+  STORIES: "stories",
+  EVENTS: "events",
+  SERIES: "series"
+};*/

@@ -8,10 +8,10 @@ EntityDetail(
   template(v-slot="{entity}")
     section(id="mainData" v-bind:class="[{ short: isShort, notShort: !isShort }]")
       img(
-        :src="entity.thumbnail.path + '.' + entity.thumbnail.extension" 
+        :src="entity.thumbnail.path + '.' + entity.thumbnail.extension"
         id="thumbnail"
       )
-      p(id="name") 
+      p(id="name")
         span {{ entity.name }}
     section(v-if="!isShort")
       label Description :
@@ -20,7 +20,7 @@ EntityDetail(
 
 <script>
 import EntityDetail from "@/components/EntityDetail";
-import { SERVICES_NAMES } from "@/enums/EnumServices";
+import Enum from "@/enums/EnumServices";
 import detailMixin from "@/mixins/detailMixin";
 
 export default {
@@ -29,7 +29,8 @@ export default {
   mixins: [detailMixin],
   data() {
     return {
-      serviceName: SERVICES_NAMES.CHARACTERS
+      serviceName: Enum.CHARACTERS,
+      entityName: "Character"
     };
   }
 };

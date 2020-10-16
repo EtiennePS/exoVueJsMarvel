@@ -2,8 +2,7 @@ import axios from "axios";
 import Vuex from "vuex";
 import VuexORM from "@vuex-orm/core";
 import VuexORMAxios from "@vuex-orm/plugin-axios";
-import Comic from "@/models/Comic";
-import Character from "@/models/Character";
+import { Comic, Character } from "@/models";
 
 VuexORM.use(VuexORMAxios, { axios });
 

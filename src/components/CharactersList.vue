@@ -11,7 +11,7 @@ EntityList(
 <script>
 import EntityList from "@/components/EntityList";
 import CharacterDetail from "@/components/CharacterDetail";
-import { SERVICES_NAMES } from "@/enums/EnumServices";
+import Enum from "@/enums/EnumServices";
 
 export default {
   name: "CharacterList",
@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      serviceName: SERVICES_NAMES.CHARACTERS,
+      serviceName: Enum.CHARACTERS,
       entityName: "Character"
     };
   },

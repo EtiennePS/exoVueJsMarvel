@@ -1,7 +1,8 @@
 import { Model } from "@vuex-orm/core";
+import Enum from "@/enums/EnumServices";
 
 export default class Comic extends Model {
-  static entity = "comics";
+  static entity = Enum.COMICS;
 
   static fields() {
     return {

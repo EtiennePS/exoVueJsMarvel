@@ -1,9 +1,11 @@
 import { Model } from "@vuex-orm/core";
+import Enum from "@/enums/EnumServices";
 
 export default class Character extends Model {
-  static entity = "characters";
+  static entity = Enum.CHARACTERS;
 
   static fields() {
+    //console.error(Enum.CHARACTERS);
     return {
       id: this.attr(null),
       name: this.attr(null),

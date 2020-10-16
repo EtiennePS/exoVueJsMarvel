@@ -1,15 +1,31 @@
 import AbstractMarvelService from "@/services/AbstractMarvelService";
-import Character from "@/models/Character";
-import Comic from "@/models/Comic";
+import { Character, Comic, Creator, Event, Series, Story } from "@/models";
+import Enum from "@/enums/EnumServices";
 
 const SERVICES = {
   characters: {
-    name: "characters",
+    name: Enum.CHARACTERS,
     model: Character
   },
   comics: {
-    name: "comics",
+    name: Enum.COMICS,
     model: Comic
+  },
+  creators: {
+    name: Enum.CREATORS,
+    model: Creator
+  },
+  events: {
+    name: Enum.EVENTS,
+    model: Event
+  },
+  series: {
+    name: Enum.SERIES,
+    model: Series
+  },
+  story: {
+    name: Enum.STORIES,
+    model: Story
   }
 };
 
