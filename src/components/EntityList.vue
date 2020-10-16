@@ -6,6 +6,7 @@
     Spinner(fill="orange" height="30px" dur="1.0s")
     |  Loading...
   div(v-else)
+    slot(name="filters")
     slot(v-for="e in entities" :entity="e")
     Paginate(
       :perPage="perPage"
@@ -29,6 +30,9 @@ export default {
     Paginate,
     Spinner
   },
+  props: {
+    filtersData: Object
+  },
   data() {
     return {
       entities: null,
@@ -51,7 +55,8 @@ export default {
         this.onUpdateDone,
         {
           limit: this.perPage,
-          offset: this.startIndex - 1
+          offset: this.startIndex - 1,
+          ...this.filtersData
         }
       );
     },
@@ -73,6 +78,12 @@ export default {
   },
   mounted() {
     this.updateEntities();
+  },
+  watch: {
+    filtersData: function() {
+      this.offset = 0;
+      this.updateEntities();
+    }
   }
 };
 </script>
