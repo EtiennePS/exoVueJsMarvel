@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       entities: null,
-      perPage: 50,
+      perPage: 20,
       currentPage: 1,
       totalResult: 0
     };

@@ -21,15 +21,12 @@ EntityDetail(
 <script>
 import EntityDetail from "@/components/EntityDetail";
 import { SERVICES_NAMES } from "@/enums/EnumServices";
+import detailMixin from "@/mixins/detailMixin";
 
 export default {
   name: "ComicDetail",
   components: { EntityDetail },
-  props: {
-    passedEntity: { default: null },
-    entityId: { type: String, default: null },
-    isShort: { type: Boolean, default: false }
-  },
+  mixins: [detailMixin],
   data() {
     return {
       serviceName: SERVICES_NAMES.COMICS,
@@ -40,28 +37,27 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  #mainData {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  #title {
-    margin-left: 10px;
-    font-weight: bold;
-  }
-  #title span {
-    vertical-align: middle;
-    display:table-cell;
-  }
-  .notShort #title span, .notShort #thumbnail {
-    height: 300px;
-    font-size: 2em;
-  }
-  .short #title span, .short #thumbnail {
-    height: 150px;
-    font-size: 1.2em;
-  }
-  
-
-
+#mainData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#title {
+  margin-left: 10px;
+  font-weight: bold;
+}
+#title span {
+  vertical-align: middle;
+  display: table-cell;
+}
+.notShort #title span,
+.notShort #thumbnail {
+  height: 300px;
+  font-size: 2em;
+}
+.short #title span,
+.short #thumbnail {
+  height: 150px;
+  font-size: 1.2em;
+}
 </style>

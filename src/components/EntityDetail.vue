@@ -15,18 +15,14 @@
 import Spinner from "@/components/IconSpinner";
 import EntityNotFound from "@/components/EntityNotFound";
 import serviceMixin from "@/mixins/serviceMixin";
+import detailMixin from "@/mixins/detailMixin";
 
 export default {
   name: "EntityDetail",
-  mixins: [serviceMixin],
+  mixins: [serviceMixin, detailMixin],
   components: {
     Spinner,
     EntityNotFound
-  },
-  props: {
-    passedEntity: { default: null },
-    entityId: { type: String, default: null },
-    isShort: { type: Boolean, default: false }
   },
   data() {
     return {

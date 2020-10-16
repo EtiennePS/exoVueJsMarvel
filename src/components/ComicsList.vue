@@ -4,7 +4,8 @@ EntityList(
   :entityName="entityName"
 )
   template(v-slot="{entity}")
-    ComicDetail(:passedEntity="entity" :isShort="true")
+    router-link(:to="{ name: 'ComicDetail', params: { entityId: entity.id }}")
+      ComicDetail(:passedEntity="entity" :isShort="true")
 </template>
 
 <script>
@@ -14,15 +15,20 @@ import { SERVICES_NAMES } from "@/enums/EnumServices";
 
 export default {
   name: "ComicsList",
-  components: { 
-    EntityList, 
-    ComicDetail 
+  components: {
+    EntityList,
+    ComicDetail
   },
   data() {
     return {
       serviceName: SERVICES_NAMES.COMICS,
       entityName: "Comic"
     };
+  },
+  methods: {
+    goToDetail: id => {
+      console.log(id);
+    }
   }
 };
 </script>

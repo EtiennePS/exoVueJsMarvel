@@ -6,18 +6,27 @@ EntityDetail(
   :passedEntity="passedEntity"
 )
   template(v-slot="{entity}")
-    h1 {{ entity.name }}
-    label Description :
-    p {{ entity.description }}
+    section(id="mainData" v-bind:class="[{ short: isShort, notShort: !isShort }]")
+      img(
+        :src="entity.thumbnail.path + '.' + entity.thumbnail.extension" 
+        id="thumbnail"
+      )
+      p(id="name") 
+        span {{ entity.name }}
+    section(v-if="!isShort")
+      label Description :
+      p {{ entity.description }}
 </template>
 
 <script>
 import EntityDetail from "@/components/EntityDetail";
 import { SERVICES_NAMES } from "@/enums/EnumServices";
+import detailMixin from "@/mixins/detailMixin";
 
 export default {
   name: "CharacterDetail",
   components: { EntityDetail },
+  mixins: [detailMixin],
   data() {
     return {
       serviceName: SERVICES_NAMES.CHARACTERS
@@ -25,3 +34,29 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+#mainData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#name {
+  margin-left: 10px;
+  font-weight: bold;
+}
+#name span {
+  vertical-align: middle;
+  display: table-cell;
+}
+.notShort #name span,
+.notShort #thumbnail {
+  height: 300px;
+  font-size: 2em;
+}
+.short #name span,
+.short #thumbnail {
+  height: 150px;
+  font-size: 1.2em;
+}
+</style>

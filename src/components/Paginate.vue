@@ -88,7 +88,10 @@ export default {
         totalList.push({ number: firList[i], text: firList[i] });
       }
 
-      if (firList.length === this.displayLength && (firList[firList.length - 1] + 1) < midList[0]) {
+      if (
+        firList.length === this.displayLength &&
+        firList[firList.length - 1] + 1 < midList[0]
+      ) {
         totalList.push({ number: middle1, text: "..." });
       }
 
@@ -96,7 +99,10 @@ export default {
         totalList.push({ number: midList[i], text: midList[i] });
       }
 
-      if (lastList.length === this.displayLength && (midList[midList.length - 1] + 1) < lastList[0]) {
+      if (
+        lastList.length === this.displayLength &&
+        midList[midList.length - 1] + 1 < lastList[0]
+      ) {
         totalList.push({ number: middle2, text: "..." });
       }
 
@@ -127,7 +133,7 @@ export default {
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
   border-left: 1px solid grey;
-  width: 35px;
+  width: 38px;
   height: 26px;
   text-align: center;
   vertical-align: middle;

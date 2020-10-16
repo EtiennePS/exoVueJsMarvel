@@ -4,16 +4,18 @@ EntityList(
   :entityName="entityName"
 )
   template(v-slot="{entity}")
-    p(@click="goCharacterDetail(entity)") {{entity.name}}
+    router-link(:to="{ name: 'CharacterDetail', params: { entityId: entity.id }}")
+      CharacterDetail(:passedEntity="entity" :isShort="true")
 </template>
 
 <script>
 import EntityList from "@/components/EntityList";
+import CharacterDetail from "@/components/CharacterDetail";
 import { SERVICES_NAMES } from "@/enums/EnumServices";
 
 export default {
   name: "CharacterList",
-  components: { EntityList },
+  components: { EntityList, CharacterDetail },
   props: {
     entityId: Number
   },
