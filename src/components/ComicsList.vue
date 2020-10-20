@@ -6,10 +6,10 @@ EntityList(
   :initialPerPage="this.filtersData.limit"
 )
   template(v-slot:filters)
-    Filters(:orderByValues="orderByValues", :initialForm="filtersData" :isTitle="true" v-on:filters-submit="onFiltersSubmit")
+    Filters(:orderByValues="orderByValues", :initialForm="filtersData" :isName="false" v-on:filters-submit="onFiltersSubmit")
       label(for="format") Format
       select(name="format")
-        option
+        option(disabled="disabled" selected="selected") Choose
         option(value="comic") Comic
         option(value="magazine") Magazine
         option(value="trade paperback") Trade paperback
@@ -20,17 +20,17 @@ EntityList(
         option(value="infinite comic") Infinite comic
       label(for="formatType") Format type
       select(name="formatType")
-        option
+        option(disabled="disabled" selected="selected") Choose
         option(value="comic") Comic
         option(value="collection") Collection
       label(for="noVariants") No variants
       select(name="noVariants")
-        option
+        option(disabled="disabled" selected="selected") Choose
         option(value="true") True
         option(value="false") False
       label(for="dateDescriptor") Date descriptor
       select(name="dateDescriptor")
-        option
+        option(disabled="disabled" selected="selected") Choose
         option(value="lastWeek") Last week
         option(value="thisWeek") This week
         option(value="nextWeek") Next week
