@@ -9,7 +9,7 @@
     |  Loading...
   section(v-if="entity")
     slot(:entity="entity")
-    div(v-if="copyright") {{ copyright }}
+    div(v-if="copyright && !isShort") {{ copyright }}
 </template>
 
 <script>

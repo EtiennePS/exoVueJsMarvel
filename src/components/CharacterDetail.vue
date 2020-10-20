@@ -4,6 +4,7 @@ EntityDetail(
   :entityName="entityName"
   :entityId="entityId"
   :passedEntity="passedEntity"
+  :isShort="isShort"
 )
   template(v-slot="{entity}")
     section(id="mainData" v-bind:class="[{ short: isShort, notShort: !isShort }]")
