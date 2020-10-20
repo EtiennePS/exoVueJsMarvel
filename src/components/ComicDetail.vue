@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     extractId(url) {
-      return url.substring(url.lastIndexOf("/"));
+      return url.substring(url.lastIndexOf("/") + 1);
     }
   }
 };
