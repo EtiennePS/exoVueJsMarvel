@@ -6,25 +6,21 @@
 .entities {
   @apply grid grid-cols-5 gap-10 mx-10;
 
-  a {
-    @apply flex rounded shadow-lg bg-gray-300;
+  .entityDetail, section {
+    @apply h-full;
+  }
 
-    .entityDetail {
-      @apply flex;
-    }
-
-    section {
-      @apply flex flex-col flex-1;
-    }
+  .entityData {
+    @apply grid grid-rows-3 grid-flow-col rounded shadow-lg bg-gray-300 self-center h-full;
 
     img {
-      @apply w-1/2 mx-auto my-5;
+      @apply row-span-2 self-center justify-self-center w-1/2 my-10;
     }
 
     p {
-      @apply text-base flex-1;
+      @apply self-center justify-self-center;
     }
+
   }
+
 }
-
-

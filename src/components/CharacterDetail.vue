@@ -7,7 +7,7 @@ EntityDetail(
   :isShort="isShort"
 )
   template(v-slot="{entity}")
-    section(id="mainData" v-bind:class="[{ short: isShort, notShort: !isShort }]")
+    section(v-bind:class="[{ short: isShort, notShort: !isShort }]").entityData
       img(
         :src="entity.thumbnail.path + '.' + entity.thumbnail.extension"
         id="thumbnail"

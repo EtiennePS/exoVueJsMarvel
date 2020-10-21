@@ -6,7 +6,7 @@ EntityDetail(
   :passedEntity="passedEntity"
 )
   template(v-slot="{entity}")
-    section(:class="[{ short: isShort, notShort: !isShort }]").entityDatas
+    section(:class="[{ short: isShort, notShort: !isShort }]").entityData
       img(
         :src="entity.thumbnail.path + '.' + entity.thumbnail.extension"
       )#thumbnail
@@ -14,40 +14,40 @@ EntityDetail(
         span {{ entity.title }}
     section(v-if="!isShort")
       h2 Characteristics
-      p Description : 
+      p Description :
         span {{ entity.description }}
-      p Variant description : 
+      p Variant description :
         span {{ entity.variantDescription }}
-      p Format : 
+      p Format :
         span {{ entity.format }}
-      p Page count : 
+      p Page count :
         span {{ entity.pageCount }}
-      p Issue number : 
+      p Issue number :
         span {{ entity.issueNumber }}
-      p Modified : 
+      p Modified :
         span {{ entity.modified }}
-      p Digital id : 
+      p Digital id :
         span {{ entity.digitalId }}
-      p ISBN : 
+      p ISBN :
         span {{ entity.isbn }}
-      p UPC : 
+      p UPC :
         span {{ entity.upc }}
-      p Diamond code : 
+      p Diamond code :
         span {{ entity.diamondCode }}
-      p EAN : 
+      p EAN :
         span {{ entity.ean }}
-      p ISSN : 
+      p ISSN :
         span {{ entity.issn }}
-      p Link : 
+      p Link :
         span {{ entity.resourceURI }}
       h2 Images
       div(v-for="i in entity.images")
         img(:src="i.path + '.' + i.extension")
-      h2(v-if="entity.characters.available > 0") Characters 
+      h2(v-if="entity.characters.available > 0") Characters
       div(v-for="c in entity.characters.items" :key="extractId(c.resourceURI)")
         router-link(:to="{ name: 'CharacterDetail', params: { entityId: extractId(c.resourceURI) }}")
           CharacterDetail(:entityId="extractId(c.resourceURI)" :isShort="true")
-        
+
 </template>
 
 <script>
