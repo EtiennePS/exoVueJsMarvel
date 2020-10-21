@@ -9,10 +9,6 @@ export default class AbstractMarvelService {
     }
   }
 
-  extractResult(data) {
-    return data.results ? data.results : data.result;
-  }
-
   // TODO MEttre des arguments de taille indéfinie ici
   getConfig(options = undefined) {
     const ts = Date.now();
@@ -30,7 +26,7 @@ export default class AbstractMarvelService {
         ...options
       },
       dataTransformer: ({ data }) => {
-        return this.extractResult(data.data);
+        return data.data.results;
       }
     };
   }

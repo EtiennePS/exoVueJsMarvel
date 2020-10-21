@@ -12,42 +12,42 @@ EntityDetail(
       )#thumbnail
       p#title
         span {{ entity.title }}
-    section(v-if="!isShort")
+    section(v-if="!isShort")#secondaryData
       h2 Characteristics
-      p Description :
+      p Description : 
         span {{ entity.description }}
-      p Variant description :
+      p Variant description : 
         span {{ entity.variantDescription }}
-      p Format :
+      p Format : 
         span {{ entity.format }}
-      p Page count :
+      p Page count : 
         span {{ entity.pageCount }}
-      p Issue number :
+      p Issue number : 
         span {{ entity.issueNumber }}
-      p Modified :
+      p Modified : 
         span {{ entity.modified }}
-      p Digital id :
+      p Digital id : 
         span {{ entity.digitalId }}
-      p ISBN :
+      p ISBN : 
         span {{ entity.isbn }}
-      p UPC :
+      p UPC : 
         span {{ entity.upc }}
-      p Diamond code :
+      p Diamond code : 
         span {{ entity.diamondCode }}
-      p EAN :
+      p EAN : 
         span {{ entity.ean }}
-      p ISSN :
+      p ISSN : 
         span {{ entity.issn }}
-      p Link :
+      p Link : 
         span {{ entity.resourceURI }}
       h2 Images
       div(v-for="i in entity.images")
         img(:src="i.path + '.' + i.extension")
       h2(v-if="entity.characters.available > 0") Characters
-      div(v-for="c in entity.characters.items" :key="extractId(c.resourceURI)")
-        router-link(:to="{ name: 'CharacterDetail', params: { entityId: extractId(c.resourceURI) }}")
-          CharacterDetail(:entityId="extractId(c.resourceURI)" :isShort="true")
-
+      .entities
+        template(v-for="c in entity.characters.items" :key="extractId(c.resourceURI)")
+          router-link(:to="{ name: 'CharacterDetail', params: { entityId: extractId(c.resourceURI) }}")
+            CharacterDetail(:entityId="extractId(c.resourceURI)" :isShort="true")
 </template>
 
 <script>
@@ -74,4 +74,26 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.notShort #mainData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notShort img,
+#secondaryData img {
+  display: inline-block;
+}
+.notShort #title {
+  font-weight: bold;
+}
+.notShort #title span,
+.notShort #thumbnail {
+  height: 300px;
+  font-size: 2em;
+}
+#secondaryData h2 {
+  font-weight: bold;
+  margin: 3px;
+}
+</style>
