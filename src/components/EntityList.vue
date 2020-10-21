@@ -62,6 +62,7 @@ export default {
     },
     onUpdateSuccess(data, copyright) {
       this.entities = data.results;
+      console.log
       this.copyright = copyright;
       this.errored = false;
       this.totalResult = data.total;

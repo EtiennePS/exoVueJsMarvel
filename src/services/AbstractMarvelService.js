@@ -42,6 +42,7 @@ export default class AbstractMarvelService {
         );
       })
       .catch(error => {
+        console.error(error);
         let message = "An errored occured, please try again later.";
         let code = null;
         if (error.response && error.response.data) {

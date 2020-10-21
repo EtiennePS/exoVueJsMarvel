@@ -23,7 +23,7 @@ const SERVICES = {
     name: Enum.SERIES,
     model: Series
   },
-  story: {
+  stories: {
     name: Enum.STORIES,
     model: Story
   }

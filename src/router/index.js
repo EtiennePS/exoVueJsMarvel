@@ -4,6 +4,14 @@ import ComicsList from "@/components/ComicsList";
 import ComicDetail from "@/components/ComicDetail";
 import CharactersList from "@/components/CharactersList";
 import CharacterDetail from "@/components/CharacterDetail";
+import StoriesList from "@/components/StoriesList";
+import StoryDetail from "@/components/StoryDetail";
+import SeriesList from "@/components/SeriesList";
+import SerieDetail from "@/components/SerieDetail";
+import EventsList from "@/components/EventsList";
+import EventDetail from "@/components/EventDetail";
+import CreatorsList from "@/components/CreatorsList";
+import CreatorDetail from "@/components/CreatorDetail";
 
 const routes = [
   {
@@ -39,6 +47,50 @@ const routes = [
     path: "/comics/:entityId",
     name: "ComicDetail",
     component: ComicDetail,
+    props: true
+  },
+  {
+    path: "/stories",
+    name: "Stories",
+    component: StoriesList
+  },
+  {
+    path: "/stories/:entityId",
+    name: "StoryDetail",
+    component: StoryDetail,
+    props: true
+  },
+  {
+    path: "/series",
+    name: "Series",
+    component: SeriesList
+  },
+  {
+    path: "/series/:entityId",
+    name: "SerieDetail",
+    component: SerieDetail,
+    props: true
+  },
+  {
+    path: "/events",
+    name: "Events",
+    component: EventsList
+  },
+  {
+    path: "/events/:entityId",
+    name: "EventDetail",
+    component: EventDetail,
+    props: true
+  },
+  {
+    path: "/creators",
+    name: "Creators",
+    component: CreatorsList
+  },
+  {
+    path: "/creators/:entityId",
+    name: "CreatorDetail",
+    component: CreatorDetail,
     props: true
   }
 ];

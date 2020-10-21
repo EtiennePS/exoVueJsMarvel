@@ -3,6 +3,10 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/characters">Character</router-link> |
     <router-link to="/comics">Comic</router-link> |
+    <router-link to="/series">Series</router-link> |
+    <router-link to="/events">Events</router-link> |
+    <router-link to="/creators">Creators</router-link> |
+    <router-link to="/stories">Stories</router-link> |
     <router-link to="/about">About</router-link>
   </div>
   <router-view />

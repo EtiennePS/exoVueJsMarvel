@@ -10,32 +10,18 @@ export default class Series extends Model {
       title: this.string(null),
       description: this.string(null),
       resourceURI: this.string(null),
-      urls: [
-        {
-          type: this.string(null),
-          url: this.string(null)
-        }
-      ],
+      urls: this.attr(null),
       modified: this.attr(null),
       startYear: this.number(null),
       endYear: this.number(null),
-      thumbnail: {
-        path: this.string(null),
-        extension: this.string(null)
-      },
+      thumbnail: this.attr(null),
       comics: this.attr(null),
       stories: this.attr(null),
       events: this.attr(null),
       characters: this.attr(null),
       creators: this.attr(null),
-      next: {
-        resourceURI: this.string(null),
-        name: this.string(null)
-      },
-      previous: {
-        resourceURI: this.string(null),
-        name: this.string(null)
-      }
+      next: this.attr(null),
+      previous: this.attr(null),
     };
   }
 }

@@ -14,16 +14,8 @@ export default class Creator extends Model {
       fullName: this.string(null),
       modified: this.attr(null),
       resourceURI: this.string(null),
-      urls: [
-        {
-          type: this.string(null),
-          url: this.string(null)
-        }
-      ],
-      thumbnail: {
-        path: this.string(null),
-        extension: this.string(null)
-      },
+      urls: this.attr(null),
+      thumbnail: this.attr(null),
       series: this.attr(null),
       stories: this.attr(null),
       comics: this.attr(null),
