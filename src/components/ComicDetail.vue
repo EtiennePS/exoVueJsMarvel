@@ -6,12 +6,11 @@ EntityDetail(
   :passedEntity="passedEntity"
 )
   template(v-slot="{entity}")
-    section(id="mainData" v-bind:class="[{ short: isShort, notShort: !isShort }]")
+    section(:class="[{ short: isShort, notShort: !isShort }]").entityDatas
       img(
         :src="entity.thumbnail.path + '.' + entity.thumbnail.extension"
-        id="thumbnail"
-      )
-      p(id="title")
+      )#thumbnail
+      p#title
         span {{ entity.title }}
     section(v-if="!isShort")
       h2 Characteristics
@@ -75,28 +74,4 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-#mainData {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#title {
-  margin-left: 10px;
-  font-weight: bold;
-}
-#title span {
-  vertical-align: middle;
-  display: table-cell;
-}
-.notShort #title span,
-.notShort #thumbnail {
-  height: 300px;
-  font-size: 2em;
-}
-.short #title span,
-.short #thumbnail {
-  height: 150px;
-  font-size: 1.2em;
-}
-</style>
+<style scoped lang="scss"></style>

@@ -5,9 +5,11 @@
   p(v-if="loading")
     Spinner(fill="orange" height="30px" dur="1.0s")
     |  Loading...
-  div(v-else)
-    slot(name="filters")
-    slot(v-for="e in entities" :entity="e")
+  div(v-else).isLoad
+    div.filters
+      slot(name="filters")
+    div.entities
+      slot(v-for="e in entities" :entity="e")
     Paginate(
       :perPage="filtersData.limit"
       :currentPage="currentPage"
