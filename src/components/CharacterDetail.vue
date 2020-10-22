@@ -56,9 +56,4 @@ export default {
   height: 300px;
   font-size: 2em;
 }
-.short #name span,
-.short #thumbnail {
-  height: 150px;
-  font-size: 1.2em;
-}
 </style>
